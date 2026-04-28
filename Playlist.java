@@ -2,44 +2,64 @@ import java.util.ArrayList;
 
 public class Playlist
 {
-    ArrayList<Song>songs;
+    private ArrayList<Song> songs = new ArrayList<>();
     
-    addSong(Song song)
+    public void addSong(Song song)
     {
+        songs.add(song);
     }
 
-    removeSong(Song song)
+    public void removeSong(String title)
     {
+        songs.removeIf(s -> s.getSongTitle().equalsIgnoreCase(title));
     }
 
-    displayPlaylist()
+    public void displayPlaylist()
     {
+        for (Song s : songs)
+        {
+            System.out.println(s.getSongTitle() + " by " + s.getArtistName());        
+        }     
     }
 
-    displaySongsAfterXPlays(int playCount)
+    public void displaySongsAfterXPlays(int minPlayCount)
     {
+        for (Song s : songs) 
+        {
+            if (s.getPlayCount() > minPlayCount) 
+            {
+                System.out.println(s.getSongTitle() + " - Plays: " + s.getPlayCount());
+            }
+        }
     }
 }
 
 class Song
 {
-    String songTitle;
-    String artistName;
-    int playCount;
+    private String songTitle;
+    private String artistName;
+    private int playCount;
 
-    public String getSongTitle(String songTitle) 
+    public Song(String title, String artist, int plays)
     {
-        return songTitle;
+        this.songTitle = title;
+        this.artistName = artist;
+        this.playCount = plays;
     }
 
-    public String getArtistName(String artistName) 
+    public String getSongTitle() 
     {
-        return artistName;
+        return this.songTitle;
     }
 
-    public int getPlayCount(int playCount)
+    public String getArtistName() 
     {
-        return playCount;
+        return this.artistName;
+    }
+
+    public int getPlayCount()
+    {
+        return this.playCount;
     }
 
     public void setSongTitle(String songTitle) 
@@ -60,17 +80,3 @@ class Song
 
 }
 
-public class Playlist
-{
-
-}
-
-class Song
-{
-
-}
-
-class editPlaylist
-{
-    
-}
