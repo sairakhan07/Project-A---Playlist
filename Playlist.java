@@ -22,7 +22,7 @@ public class Playlist
         }     
     }
 
-    public void displaySongsAfterXPlays(int minPlayCount)
+    public void DisplaySongsAbovePlayCount(long minPlayCount)
     {
         for (Song s : songs) 
         {
@@ -32,15 +32,50 @@ public class Playlist
             }
         }
     }
+    
+    public static void main(String[] args)
+    {
+        Playlist myPlaylist = new Playlist();
+        
+        myPlaylist.addSong(new Song("Shape of You", "Ed Sheeran", 4893718356L));
+        myPlaylist.addSong(new Song("D O D O", "Tayc", 172800535L));
+        myPlaylist.addSong(new Song("Havana", "Camilla Cabello", 2465034444L));
+        myPlaylist.addSong(new Song("No Scrubs", "TLC", 1575003362L));
+        myPlaylist.addSong(new Song("Fill Me In", "Craig David", 70010778L));
+        myPlaylist.addSong(new Song("Just the Way You Are", "Bruno Mars", 3255275101L));
+        myPlaylist.addSong(new Song("Genie in a Bottle", "Christina Aguilera", 740794605L));
+        myPlaylist.addSong(new Song("Maria Maria", "Santana", 626285217L));
+        myPlaylist.addSong(new Song("Flatline", "Justin Bieber", 286411374L));
+        myPlaylist.addSong(new Song("Crazy In Love", "Beyonce", 1834515045L));
+        myPlaylist.addSong(new Song("Smooth Criminal", "Michael Jackson", 1159042L));
+        myPlaylist.addSong(new Song("Beautiful Girls", "Shaun Kingston", 1118596046L));
+
+        System.out.println("---My playlist---");
+        myPlaylist.displayPlaylist();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Removing 'Shape of You' from playlist...");
+        myPlaylist.removeSong("Shape of You");
+        myPlaylist.displayPlaylist();
+        System.out.println();
+        System.out.println();
+
+        long minPlays = 1000000000;
+        
+        System.out.println("Songs with more than " + minPlays + " plays:");
+        myPlaylist.DisplaySongsAbovePlayCount(minPlays);
+
+    }
 }
 
 class Song
 {
     private String songTitle;
     private String artistName;
-    private int playCount;
+    private long playCount;
 
-    public Song(String title, String artist, int plays)
+    public Song(String title, String artist, long plays)
     {
         this.songTitle = title;
         this.artistName = artist;
@@ -57,7 +92,7 @@ class Song
         return this.artistName;
     }
 
-    public int getPlayCount()
+    public long getPlayCount()
     {
         return this.playCount;
     }
@@ -72,7 +107,7 @@ class Song
         this.artistName = artistName;
     }
 
-    public void setPlayCount(int playCount) 
+    public void setPlayCount(long playCount) 
     {
         this.playCount = playCount; 
     }
@@ -80,39 +115,3 @@ class Song
 
 }
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        Playlist myPlaylist = new Playlist();
-        
-        myPlaylist.addSong(new Song("Shape of You", "Ed Sheeran", 4893718356));
-        myPlaylist.addSong(new Song("D O D O", "Tayc", 172800535));
-        myPlaylist.addSong(new Song("Havana", "Camilla Cabello", 2465034444));
-        myPlaylist.addSong(new Song("No Scrubs", "TLC", 1575003362));
-        myPlaylist.addSong(new Song("Fill Me In", "Craig David", 70010778));
-        myPlaylist.addSong(new Song("Just the Way You Are", " Bruno Mars", 3255275101));
-        myPlaylist.addSong(new Song("Genie in a Bottle", "Christina Aguilera", 740794605));
-        myPlaylist.addSong(new Song("Maria Maria", "Santana", 626285217));
-        myPlaylist.addSong(new Song("Flatline", "Justin Bieber", 286411374));
-        myPlaylist.addSong(new Song("Crazy In Love", "Beyonce", 1834515045));
-        myPlaylist.addSong(new Song("Smooth Criminal", "Michael Jackson", 1159042));
-        myPlaylist.addSong(new Song("Beautiful Girls", "Shaun Kingston", 1118596046));
-
-        System.out.println("---My playlist---");
-        myPlaylist.displayPlaylist();
-        System.out.println();
-        System.out.println();
-
-        System.out.println("Removing 'Shape of You' from playlist...");
-        myPlaylist.removeSong("Shape of You");
-        myPlaylist.displayPlaylist();
-        System.out.println();
-        System.out.println();
-
-        int minPlays = 1000000000;
-        System.out.println("Songs with more than " + minPlays + " plays:");
-        myPlaylist.displaySongsAfterXPlays(minPlays);
-
-    }
-}
