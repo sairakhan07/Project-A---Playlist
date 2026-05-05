@@ -80,3 +80,40 @@ class Song
 
 }
 
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Playlist myPlaylist = new Playlist();
+        
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+        myPlaylist.addSong(new Song());
+
+        System.out.println("---My playlist---");
+        myPlaylist.displayPlaylist();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Removing '' from playlist...");
+        myPlaylist.removeSong("");
+        myPlaylist.displayPlaylist();
+        System.out.println();
+        System.out.println();
+
+        int minPlays = 100000;
+        System.out.println("Songs with more than " + minPlays + " plays:");
+        myPlaylist.displaySongsAfterXPlays(minPlays);
+
+    }
+}
+
